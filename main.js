@@ -338,10 +338,10 @@ window.addEventListener("load", () => {
   theadTd4.setAttribute("scope", "col");
 
   // theadTd0.appendChild(document.createTextNode("Русское слово"));
-  theadTd1.appendChild(document.createTextNode("Русское слово"));
-  theadTd2.appendChild(document.createTextNode("Иностранное слово"));
-  theadTd3.appendChild(document.createTextNode("Транскрипция"));
-  theadTd4.appendChild(document.createTextNode("Ассоциация"));
+  theadTd1.appendChild(document.createTextNode("Русское"));
+  theadTd2.appendChild(document.createTextNode("Иностранное"));
+  theadTd3.appendChild(document.createTextNode("Тр."));
+  theadTd4.appendChild(document.createTextNode("Асс"));
 
   const tbody = tableElement.appendChild(document.createElement("tbody"));
 

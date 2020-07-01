@@ -1,5 +1,4 @@
 body {
-    font-size: 18px;
 }
 
 
@@ -36,6 +35,8 @@ tbody .word-item_close:before {
   justify-content: center;
   padding: .5em;
   margin: 0;
+  font-size: 18px;
+
 }
 
 .word-item_close:hover:before {
@@ -61,3 +62,19 @@ tbody .word-item_close:before {
   margin-right: 1em;
 }
 
+
+
+@media (max-width: 321px) {
+  body {
+    font-size: 12px;
+    word-wrap: normal;
+  }
+  
+  table td {
+    width: 15%;
+  }
+  
+  table td:first-child {
+    width: 3em;
+  }
+}
