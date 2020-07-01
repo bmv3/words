@@ -46,4 +46,5 @@ tbody .word-item_close:before {
   background: green;
   color: white;
   bottom: 0;
+  padding: 1em;
 }

@@ -27,6 +27,15 @@ window.addEventListener("load", ()=>{
       {rus: "шайба",           eng: "puck",   transcription: "[pʌk]",   association: "пакет"}
     ]
     
+    
+    
+    let score = wordsList.length;
+    console.log(score);
+    
+    let startCount = document.getElementById("start_count");
+    startCount.innerText = `${score}`;
+    
+
     const wordsElement = document.getElementById("words");
     const tableElement = document.createElement("table");
     tableElement.setAttribute("class", "table");
@@ -82,7 +91,8 @@ window.addEventListener("load", ()=>{
 
       tdClose.addEventListener("click", (event)=>{
         event.srcElement.parentElement.classList.toggle("hide");
-        
+        score -= 1;
+        console.log(score);
 
       });
     })
