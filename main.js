@@ -301,7 +301,7 @@ window.addEventListener("load", () => {
     { rus: "яйцо", eng: "egg", transcription: "[ɛg]", association: "экзамен" },
     { rus: "сова", eng: "owl", transcription: "[aʊl]", association: "Акула, аут ( в футболе сбрасывает)" },
     { rus: "картофель", eng: "potato", transcription: "[pəˈteɪtəʊ]", association: "потеет" }
-    ]
+  ]
 
   let score = wordsList.length;
 
