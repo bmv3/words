@@ -109,5 +109,12 @@ window.addEventListener("load", () => {
     storage.setItem("myWords", JSON.stringify(storedData));
 
     storedData = [];
+    document.location.reload(true);
   });
+  
+  const resetButton = document.getElementById("reset_button");
+  resetButton.addEventListener("click", (event)=>{
+    storage.removeItem("myWords");
+    document.location.reload(true);
+  })
 })
