@@ -65,6 +65,17 @@ tbody .word-item_close:before {
   align-content: center;
 }
 
+.options-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
+}
+.options-panel label {
+  width: 10em;
+}
+
 @media (max-width: 320px) {
   table td {
     width: 20%;

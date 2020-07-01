@@ -1,6 +1,6 @@
 window.addEventListener("load", () => {
-  
-  
+
+
   function insertTableHeader() {
     const thead = tableElement.appendChild(document.createElement("thead"));
     thead.setAttribute("class", "thead-dark");
@@ -31,13 +31,13 @@ window.addEventListener("load", () => {
     theadTd3.appendChild(document.createTextNode("Тр."));
     theadTd4.appendChild(document.createTextNode("Асс"));
   }
-  
+
   let storage = window.localStorage;
 
   if (storage.getItem("myWords")) {
     wordsList = JSON.parse(storage.getItem("myWords"));
   }
-  
+
   let score = wordsList.length;
 
   let startCount = document.getElementById("start_count");
@@ -53,7 +53,7 @@ window.addEventListener("load", () => {
   insertTableHeader();
 
   const tbody = tableElement.appendChild(document.createElement("tbody"));
-  
+
   wordsList.forEach((item) => {
 
     const tr = tbody.appendChild(document.createElement("tr"));
@@ -79,16 +79,16 @@ window.addEventListener("load", () => {
       leftWords.innerText = `${score}`;
     });
   });
-  
-  
+
+
   wordsElement.appendChild(tableElement);
 
 
 
-/**
- * Функционал сохранения данных
- *
- */
+  /**
+   * Функционал сохранения данных
+   *
+   */
   const storeButton = document.getElementById("store_button");
   storeButton.addEventListener("click", (event) => {
     let items = tbody.querySelectorAll("tr:not(.hide)");
@@ -96,7 +96,7 @@ window.addEventListener("load", () => {
     let storedData = [];
 
     for (let item of items) {
-      
+
       storedData.push({
         rus: item.getElementsByClassName("word-item_rus")[0].innerText,
         eng: item.getElementsByClassName("word-item_eng")[0].innerText,
@@ -111,10 +111,26 @@ window.addEventListener("load", () => {
     storedData = [];
     document.location.reload(true);
   });
-  
+
   const resetButton = document.getElementById("reset_button");
-  resetButton.addEventListener("click", (event)=>{
+  resetButton.addEventListener("click", (event) => {
     storage.removeItem("myWords");
     document.location.reload(true);
+  });
+
+  const optionsPanel = document.querySelector(".options-panel");
+  optionsPanel.addEventListener("click", (event) => {
+
+    let checkboxes = document.querySelectorAll(".options-panel input[type=checkbox]:not(:checked)");
+
+    for (let checkbox of checkboxes) {
+
+      let element = document.querySelectorAll(`td.${checkbox.dataset.class}`);
+      
+      for(let item of element) {
+        item.classList.toggle("hide");
+      }
+    }
   })
+
 })
