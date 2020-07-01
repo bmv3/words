@@ -18,10 +18,10 @@ tbody .word-item_close {
 }
 
 tbody .word-item_close:before {
-  content: "-";
+  content: "?";
   position: absolute;
   left: .55em;
-  top: .55em;
+  top: 1em;
   width: 20px;
   height: 20px;
   background: red;
@@ -30,12 +30,14 @@ tbody .word-item_close:before {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
   padding: .5em;
   margin: 0;
 }
 
-.word-item_close:hover {
+.word-item_close:hover:before {
+  background-color: green;
+  content: "X";
+
 }
 
 
@@ -55,4 +57,3 @@ tbody .word-item_close:before {
   margin-right: 1em;
 }
 
-#left_words {
