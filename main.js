@@ -81,16 +81,10 @@ window.addEventListener("load", ()=>{
 
 
       tdClose.addEventListener("click", (event)=>{
-        console.log(event.srcElement.parentElement.classList.toggle("hide"));
-        // event.srcElement.parentElement.toggle = ""
+        event.srcElement.parentElement.classList.toggle("hide");
         
+
       });
-      
-      
-      // textnode = document.createTextNode("Water");
-      // tableElement.appendChild(textnode);
-      
-      // console.log(item);
     })
     wordsElement.appendChild(tableElement);
   

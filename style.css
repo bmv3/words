@@ -37,3 +37,13 @@ tbody .word-item_close:before {
 
 .word-item_close:hover {
 }
+
+
+#score {
+  position: sticky;
+  width: 100%;
+  height: 3em;
+  background: green;
+  color: white;
+  bottom: 0;
+}
