@@ -62,7 +62,10 @@ tbody .word-item_close:before {
   margin-right: 1em;
 }
 
-
+.bottom-panel {
+  display: flex;
+  flex-direction: row;
+}
 
 @media (max-width: 320px) {
   table td {

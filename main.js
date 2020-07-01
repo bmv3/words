@@ -1,5 +1,5 @@
 window.addEventListener("load", () => {
-  const wordsList = [
+  let wordsList = [
     { rus: "кулак", eng: "fist", transcription: "[fɪst]", association: "фисташки" },
     { rus: "кирпич", eng: "brick", transcription: "[brɪk]", association: "брикет" },
     { rus: "парик", eng: "wig", transcription: "[wɪg]", association: "вигвам" },
@@ -303,10 +303,18 @@ window.addEventListener("load", () => {
     { rus: "картофель", eng: "potato", transcription: "[pəˈteɪtəʊ]", association: "потеет" }
   ]
 
+
+  let storage = window.localStorage;
+
+  if (storage.getItem("myWords")) {
+    wordsList = JSON.parse(storage.getItem("myWords"));
+  }
+
   let score = wordsList.length;
 
   let startCount = document.getElementById("start_count");
   let leftWords = document.getElementById("left_words");
+  const storeButton = document.getElementById("store_button");
 
   startCount.innerText = `${score}`;
   leftWords.innerText = `${score}`;
@@ -363,14 +371,38 @@ window.addEventListener("load", () => {
     tdTrans.appendChild(document.createTextNode(item.transcription));
     tdAssoc.appendChild(document.createTextNode(item.association));
 
+    storeButton.addEventListener("click", (event) => {
+
+      let items = tbody.getElementsByTagName("tr");
+      let rus = "";
+      let wordsList = [];
+      
+      for (let item of items) {
+        rus = item.getElementsByClassName("word-item_rus")[0];
+        eng = item.getElementsByClassName("word-item_eng")[0];
+        transcription = item.getElementsByClassName("word-item_trans")[0];
+        association = item.getElementsByClassName("word-item_assoc")[0];
+        
+        wordsList.push({
+          rus: rus, 
+          eng: eng, 
+          transcription: transcription, 
+          association: association
+        });
+        
+        
+      }
+      storage.setItem("myWords", JSON.stringify(wordsList));
+    
+      storedData = [];
+    });
 
     tdClose.addEventListener("click", (event) => {
       event.srcElement.parentElement.classList.toggle("hide");
       score -= 1;
       leftWords.innerText = `${score}`;
-
+      // wordsElement.appendChild(tableElement)
     });
-  })
-  wordsElement.appendChild(tableElement);
+  });
 
 })
