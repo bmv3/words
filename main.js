@@ -308,6 +308,8 @@ window.addEventListener("load", () => {
 
   if (storage.getItem("myWords")) {
     wordsList = JSON.parse(storage.getItem("myWords"));
+    
+    // console.log(JSON.parse(storage.getItem("myWords")));
   }
 
   let score = wordsList.length;
@@ -345,15 +347,21 @@ window.addEventListener("load", () => {
   theadTd3.setAttribute("scope", "col");
   theadTd4.setAttribute("scope", "col");
 
-  // theadTd0.appendChild(document.createTextNode("Русское слово"));
+  theadTd0.appendChild(document.createTextNode("Русское слово"));
   theadTd1.appendChild(document.createTextNode("Русское"));
   theadTd2.appendChild(document.createTextNode("Иностранное"));
   theadTd3.appendChild(document.createTextNode("Тр."));
   theadTd4.appendChild(document.createTextNode("Асс"));
 
   const tbody = tableElement.appendChild(document.createElement("tbody"));
+  
+  
 
+  // console.log(wordsList);
+  
   wordsList.forEach((item) => {
+// console.log(item);
+    
     const tr = tbody.appendChild(document.createElement("tr"));
     const tdClose = tr.appendChild(document.createElement("td"));
     const tdRus = tr.appendChild(document.createElement("td"));
@@ -365,34 +373,34 @@ window.addEventListener("load", () => {
     tdEng.setAttribute("class", "word-item_eng");
     tdTrans.setAttribute("class", "word-item_trans");
     tdAssoc.setAttribute("class", "word-item_assoc");
-    // tdClose.appendChild(document.createTextNode("X"));
+    tdClose.appendChild(document.createTextNode("X"));
     tdRus.appendChild(document.createTextNode(item.rus));
     tdEng.appendChild(document.createTextNode(item.eng));
     tdTrans.appendChild(document.createTextNode(item.transcription));
     tdAssoc.appendChild(document.createTextNode(item.association));
-
     storeButton.addEventListener("click", (event) => {
 
       let items = tbody.getElementsByTagName("tr");
       let rus = "";
-      let wordsList = [];
+      let storedData = [];
       
       for (let item of items) {
         rus = item.getElementsByClassName("word-item_rus")[0];
-        eng = item.getElementsByClassName("word-item_eng")[0];
-        transcription = item.getElementsByClassName("word-item_trans")[0];
-        association = item.getElementsByClassName("word-item_assoc")[0];
+        eng = item.getElementsByClassName("word-item_eng")[0].innerText;
+        transcription = item.getElementsByClassName("word-item_trans")[0].innerText;
+        association = item.getElementsByClassName("word-item_assoc")[0].innerText;
         
-        wordsList.push({
+        storedData.push({
           rus: rus, 
           eng: eng, 
           transcription: transcription, 
           association: association
         });
         
+        console.log(item);
         
       }
-      storage.setItem("myWords", JSON.stringify(wordsList));
+      storage.setItem("myWords", JSON.stringify(storedData));
     
       storedData = [];
     });
